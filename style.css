@@ -1,0 +1,114 @@
+body {
+  background-color: #000;
+}
+
+@font-face {
+  font-family: 'FuturaPress';
+  src: url('fonts/FuturaPressPress.eot');
+  src: local('FuturaPress Press:ver.1.15'), local('FuturaPressPress'), url('fonts/FuturaPressPress.eot?#iefix') format('embedded-opentype'), url('fonts/FuturaPressPress.woff2') format('woff2'), url('fonts/FuturaPressPress.woff') format('woff'), url('fonts/FuturaPressPress.ttf') format('truetype'), url('fonts/FuturaPressPress.svg#FuturaPressPress') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.section {
+  text-align: center;
+  font-size: 3em;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  /* -webkit-text-stroke: 0.3px gray; */
+  /* mix-blend-mode: difference; */
+}
+
+.section:first-child {
+  -webkit-text-stroke: none;
+}
+
+.section:nth-child(6) {
+  color: white;
+}
+
+.section:nth-child(5) {
+  -webkit-text-stroke: 0.3px black;
+  color: #fff;
+  animation: rainbow 18s infinite linear;
+  background: linear-gradient( 90deg, #ff0000 0%, #ff9a00 8.33%, #d0de21 16.67%, #4fdc4a 25%, #3fdad8 33.33%, #2fc9e2 41.67%, #1c7fee 50%, #5f15f2 58.33%, #ba0cf8 66.67%, #fb07d9 75%, #ff0000 83.33%, #ff9a00 91.67%, #d0de21 100%);
+  background-size: 800%;
+}
+
+h1, h2 {
+  opacity: 0;
+  text-align: center;
+}
+
+.fp-controlArrow {
+  display:none;
+}
+
+h1 {
+  color: #fff;
+  margin: 0;
+  animation: letterspace 8s ease 1s forwards;
+  font-family: FuturaPress, sans-serif;
+  font-size: 7vmax;
+}
+
+h2 {
+  color: #ddd;
+  animation: show 1s ease 7s forwards;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  font-size: 2vmax;
+  margin: 0 3em;
+  height: 0;
+  display: inline-block;
+}
+
+@keyframes letterspace {
+  0% {
+    letter-spacing: -5vw;
+    text-indent: -5vw;
+    opacity: 0;
+    text-shadow: 0 0 10px #000;
+  }
+  15% {
+    letter-spacing: 5vw;
+    text-indent: 5vw;
+    opacity: 1;
+    text-shadow: 0 0 10px #000;
+  }
+  50% {
+    letter-spacing: 5vw;
+    text-indent: 5vw;
+    opacity: 1;
+    text-shadow: 0 0 100px #FFFFFF, 0 0 300px #FFFFFF;
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -4vh);
+    letter-spacing: 5vw;
+    text-indent: 5vw;
+    opacity: 1;
+    text-shadow: 0 0 100px #FFFFFF, 0 0 300px #FFFFFF;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
