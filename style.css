@@ -24,11 +24,11 @@ body {
   -webkit-text-stroke: none;
 }
 
-.section:nth-child(6) {
+.section:nth-child(7) {
   color: white;
 }
 
-.section:nth-child(5) {
+.section:nth-child(6) {
   -webkit-text-stroke: 0.3px black;
   color: #fff;
   animation: rainbow 18s infinite linear;
