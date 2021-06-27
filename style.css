@@ -16,6 +16,7 @@ body {
   font-size: 3em;
   letter-spacing: 0.2em;
   text-indent: 0.2em;
+  font-family: 'Open Sans', 'Roboto', sans-serif;
   /* -webkit-text-stroke: 0.3px gray; */
   /* mix-blend-mode: difference; */
 }
@@ -64,6 +65,11 @@ h2 {
   margin: 0 3em;
   height: 0;
   display: inline-block;
+}
+
+iframe {
+  width: 40vmax;
+  height: 70vmin;
 }
 
 @keyframes letterspace {
