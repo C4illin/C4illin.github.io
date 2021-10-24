@@ -1,0 +1,38 @@
+img {
+  width: calc(100% / 5);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body {
+  margin: 0;
+}
+
+@media screen and (max-width: 2400px) {
+  img {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  img {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  img {
+    width: 100%;
+  }
+}
