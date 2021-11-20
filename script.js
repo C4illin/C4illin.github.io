@@ -13,4 +13,5 @@ sectColor[7] = "#f46607"
 
 new fullpage('#fullpage', {
   sectionsColor: sectColor,
+  licenseKey: 'W3OlN!Z$y4'
 })
