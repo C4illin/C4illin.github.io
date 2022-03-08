@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Open Sans', 'Roboto', sans-serif;
+  background-color: black;
 }
 
 #cent-wrapper {
@@ -9,16 +10,8 @@ body {
   display:flex;
   align-items: center;
   justify-content: center;
-  background-color: #000;
 }
 
-h1 {
-  margin: 0;
-  word-break: break-all;
-  font-weight: 100;
-  color: #fff;
-  text-align: center;
-  font-size: 10em;
-  letter-spacing: 1em;
-  text-indent: 1em;
+img {
+  height: 40vh;
 }
