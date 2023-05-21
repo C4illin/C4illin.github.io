@@ -15,6 +15,11 @@
   --accent: #7d36e1;
 }
 
+* {
+  box-sizing: border-box;
+  cursor: none;
+}
+
 html,
 body {
   background-color: var(--accent);
@@ -26,7 +31,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  cursor: none;
 }
 
 ::selection {
@@ -65,13 +69,11 @@ body {
 #toggle span {
   border: 2px solid var(--text);
   border-radius: 50px;
-  cursor: none;
   display: inline-block;
   position: relative;
   transition: all ease-in-out 0.3s;
   width: 100px;
   height: 50px;
-  box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
@@ -110,7 +112,6 @@ main h1 {
   margin: 3rem 0;
   text-align: justify;
   white-space: nowrap;
-  box-sizing: border-box;
   display: inline-block;
   color: var(--text);
   transition: color 0.3s ease;
@@ -154,7 +155,6 @@ li a {
   font-family: sans-serif;
   font-weight: 300;
   font-size: 2rem;
-  cursor: none;
 }
 
 a:after {
