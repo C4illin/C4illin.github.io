@@ -1,4 +1,3 @@
-// on mousemove
 const cursor = document.getElementById("cursor");
 let cursorInit = false;
 const links = document.querySelectorAll("a, h1, label");
@@ -43,10 +42,9 @@ const deleteMouse = () => {
   cursorInit = false;
 };
 
-// on mouseleave
 document.addEventListener("mouseout", deleteMouse, false);
-
 document.addEventListener("touchend", deleteMouse, false);
+document.addEventListener("touchcancel", deleteMouse, false);
 
 const explodeName = () => {
   letters.forEach((letter) => {
@@ -63,32 +61,24 @@ const implodeName = () => {
 };
 
 const toggleSwitch = document.getElementById("toggle");
-
-//determines if the user has a set theme
 function detectColorScheme() {
-  let theme = "light"; //default to light
-
-  //local storage is used to override OS theme settings
+  let theme = "light";
   if (localStorage.getItem("theme")) {
     if (localStorage.getItem("theme") == "dark") {
       theme = "dark";
     }
   } else if (!window.matchMedia) {
-    //matchMedia method not supported
     return false;
   } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    //OS theme setting detected as dark
     theme = "dark";
   }
 
-  //dark theme preferred, set document with a `data-theme` attribute
   if (theme == "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
   }
 }
 detectColorScheme();
 
-//function that changes the theme, and sets a localStorage variable to track the theme between page loads
 function switchTheme(e) {
   if (e.target.checked) {
     localStorage.setItem("theme", "dark");
@@ -101,10 +91,8 @@ function switchTheme(e) {
   }
 }
 
-//listener for changing themes
 toggleSwitch.addEventListener("input", switchTheme, false);
 
-//pre-check the dark-theme checkbox if dark-theme is set
 if (document.documentElement.getAttribute("data-theme") == "dark") {
   toggleSwitch.checked = true;
 }
