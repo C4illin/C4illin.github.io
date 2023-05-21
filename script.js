@@ -7,6 +7,10 @@ links.forEach((selfLink) => {
   selfLink.addEventListener("mouseover", function () {
     cursor.classList.add("cursor-link");
   });
+  
+  selfLink.addEventListener("touchmove", function () {
+    cursor.classList.add("cursor-link");
+  });
 
   selfLink.addEventListener("touchend", function () {
     cursor.classList.remove("cursor-link");
@@ -17,15 +21,8 @@ links.forEach((selfLink) => {
   });
 });
 
-document.addEventListener("mousemove", function (e) {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-
-  if (!cursorInit) {
-    cursor.style.opacity = 1;
-    cursorInit = true;
-  }
-});
+document.addEventListener("mousemove", (e) => moveMouse(e));
+document.addEventListener("click", (e) => moveMouse(e));
 
 document.addEventListener("touchmove", function (e) {
   cursor.style.left = e.touches[0].clientX + "px";
@@ -37,6 +34,16 @@ document.addEventListener("touchmove", function (e) {
   }
 });
 
+const moveMouse = (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  if (!cursorInit) {
+    cursor.style.opacity = 1;
+    cursorInit = true;
+  }
+};
+
 const deleteMouse = () => {
   cursor.style.opacity = 0;
   cursorInit = false;
@@ -45,6 +52,7 @@ const deleteMouse = () => {
 document.addEventListener("mouseout", deleteMouse, false);
 document.addEventListener("touchend", deleteMouse, false);
 document.addEventListener("touchcancel", deleteMouse, false);
+document.addEventListener("touchleave", deleteMouse, false);
 
 const explodeName = () => {
   letters.forEach((letter) => {
