@@ -15,9 +15,10 @@
   --accent: #7d36e1;
 }
 
-html, body {
+html,
+body {
   background-color: var(--accent);
-} 
+}
 
 body {
   height: 100%;
@@ -186,4 +187,3 @@ a:hover:after {
     font-size: 1.5rem;
   }
 }
-
