@@ -1,7 +1,7 @@
 // on mousemove
 let cursor = document.getElementById("cursor");
 let cursorInit = false;
-let links = document.querySelectorAll("a, h1");
+let links = document.querySelectorAll("a, h1, label");
 let letters = document.querySelectorAll("h1 > span");
 
 links.forEach((selfLink) => {
@@ -35,10 +35,10 @@ document.addEventListener("mouseout", function (e) {
 });
 
 let explodeName = () => {
-
   letters.forEach((letter) => {
-    letter.style.transform = `translate(${(Math.random() - 0.5) * 0.2}em, ${(Math.random() - 0.5) * 0.5}em) rotate(${(Math.random() - 0.5) * 60}deg)`;
-
+    letter.style.transform = `translate(${(Math.random() - 0.5) * 0.2}em, ${
+      (Math.random() - 0.5) * 0.5
+    }em) rotate(${(Math.random() - 0.5) * 60}deg)`;
   });
 };
 
@@ -46,4 +46,51 @@ let implodeName = () => {
   letters.forEach((letter) => {
     letter.style.transform = `translate(0px, 0px)`;
   });
+};
+
+const toggleSwitch = document.getElementById("toggle");
+
+//determines if the user has a set theme
+function detectColorScheme() {
+  let theme = "light"; //default to light
+
+  //local storage is used to override OS theme settings
+  if (localStorage.getItem("theme")) {
+    if (localStorage.getItem("theme") == "dark") {
+      theme = "dark";
+    }
+  } else if (!window.matchMedia) {
+    //matchMedia method not supported
+    return false;
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //OS theme setting detected as dark
+    theme = "dark";
+  }
+
+  //dark theme preferred, set document with a `data-theme` attribute
+  if (theme == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+}
+detectColorScheme();
+
+//function that changes the theme, and sets a localStorage variable to track the theme between page loads
+function switchTheme(e) {
+    if (e.target.checked) {
+        localStorage.setItem('theme', 'dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleSwitch.checked = true;
+    } else {
+        localStorage.setItem('theme', 'light');
+        document.documentElement.setAttribute('data-theme', 'light');
+        toggleSwitch.checked = false;
+    }    
+}
+
+//listener for changing themes
+toggleSwitch.addEventListener("input", switchTheme, false);
+
+//pre-check the dark-theme checkbox if dark-theme is set
+if (document.documentElement.getAttribute("data-theme") == "dark"){
+    toggleSwitch.checked = true;
 }

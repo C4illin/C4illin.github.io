@@ -3,12 +3,23 @@
   src: url(./MonumentValley12.woff2) format("woff2");
 }
 
-html {
+:root {
   --text: #000;
   --background: #fff;
   --hover: #e9fac8;
   --accent: #82c91e;
 }
+
+[data-theme="dark"] {
+  --text: #fff;
+  --background: #000;
+  --hover: #160537;
+  --accent: #7d36e1;
+}
+
+html, body {
+  background-color: var(--accent);
+} 
 
 body {
   height: 100%;
@@ -28,7 +39,7 @@ body {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: var(--background);
+  background-color: white;
   z-index: 1000;
   mix-blend-mode: difference;
   pointer-events: none;
@@ -39,6 +50,46 @@ body {
 
 #cursor.cursor-link {
   transform: translate(-50%, -50%) scale(3);
+}
+
+#toggle {
+  position: fixed;
+  top: 1rem;
+  left: calc(50% + -50px);
+}
+
+#toggle input[type="checkbox"] {
+  display: none;
+}
+
+#toggle span {
+  border: 2px solid var(--text);
+  border-radius: 50px;
+  cursor: none;
+  display: inline-block;
+  position: relative;
+  transition: all ease-in-out 0.3s;
+  width: 100px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+#toggle span::after {
+  background-color: var(--accent);
+  border-radius: 50%;
+  content: "";
+  cursor: none;
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  transition: all ease-in-out 0.3s;
+  width: 40px;
+  height: 40px;
+}
+
+#toggle input[type="checkbox"]:checked ~ span::after {
+  transform: translateX(50px);
 }
 
 main {
@@ -59,6 +110,7 @@ main h1 {
   white-space: nowrap;
   box-sizing: border-box;
   display: inline-block;
+  color: var(--text);
 }
 
 span {
@@ -104,7 +156,7 @@ li a {
   cursor: none;
 }
 
-a:after {
+li:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -117,7 +169,7 @@ a:after {
   transition: transform 0.3s ease;
 }
 
-a:hover:after {
+li:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
@@ -136,3 +188,4 @@ a:hover:after {
     font-size: 1.5rem;
   }
 }
+
