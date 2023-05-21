@@ -3,7 +3,8 @@
   src: url(./MonumentValley12.woff2) format("woff2");
 }
 
-:root, :root.light {
+:root,
+:root.light {
   --text: #000;
   --background: #fff;
   --accent: #82c91e;
@@ -48,11 +49,15 @@ body {
   mix-blend-mode: difference;
   pointer-events: none;
   opacity: 0;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
 #cursor.cursor-link {
+  -webkit-transform: translate(-50%, -50%) scale(3);
   transform: translate(-50%, -50%) scale(3);
 }
 
@@ -92,6 +97,7 @@ body {
 }
 
 #toggle input[type="checkbox"]:checked ~ span::after {
+  -webkit-transform: translateX(50px);
   transform: translateX(50px);
 }
 
@@ -119,7 +125,10 @@ main h1 {
 
 span {
   display: inline-block;
+  transition: -webkit-transform 0.7s cubic-bezier(0.1, 0.2, 0.7, 3);
   transition: transform 0.7s cubic-bezier(0.1, 0.2, 0.7, 3);
+  transition: transform 0.7s cubic-bezier(0.1, 0.2, 0.7, 3),
+    -webkit-transform 0.7s cubic-bezier(0.1, 0.2, 0.7, 3);
 }
 
 ul {
@@ -161,17 +170,23 @@ a:after {
   content: "";
   position: absolute;
   width: 100%;
+  -webkit-transform: scaleX(0);
   transform: scaleX(0);
   height: 3px;
   bottom: 0;
   left: 0;
   background-color: var(--accent);
+  -webkit-transform-origin: bottom right;
   transform-origin: bottom right;
+  transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 a:hover:after {
+  -webkit-transform: scaleX(1);
   transform: scaleX(1);
+  -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
 }
 
