@@ -1,6 +1,6 @@
 @font-face {
   font-family: "MonumentValley12";
-  src: local("MonumentValley"), local("Monument Valley"), url(./MonumentValley12.woff2) format("woff2");
+  src: local("Monument_Valley_1.2"), local("MonumentValley"), local("Monument Valley"), url(./MonumentValley12.woff2) format("woff2");
   font-display: swap;
 }
 
