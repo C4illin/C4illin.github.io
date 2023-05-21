@@ -60,34 +60,37 @@ const implodeName = () => {
   });
 };
 
-const toggleSwitch = document.getElementById("toggle");
+const toggleSwitch = document.getElementById("toggle-check");
 function detectColorScheme() {
   let theme = "light";
   if (localStorage.getItem("theme")) {
     if (localStorage.getItem("theme") == "dark") {
       theme = "dark";
     }
-  } else if (!window.matchMedia) {
-    return false;
-  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
     theme = "dark";
   }
 
   if (theme == "dark") {
-    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.classList.add("dark");
+    toggleSwitch.checked = true;
+    console.log("dark");
+  } else {
+    document.documentElement.classList.add("light");
+    toggleSwitch.checked = false;
   }
 }
 detectColorScheme();
 
 function switchTheme(e) {
-  if (e.target.checked) {
+  if (toggleSwitch.checked) {
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.add("dark");
     localStorage.setItem("theme", "dark");
-    document.documentElement.setAttribute("data-theme", "dark");
-    toggleSwitch.checked = true;
   } else {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.add("light");
     localStorage.setItem("theme", "light");
-    document.documentElement.setAttribute("data-theme", "light");
-    toggleSwitch.checked = false;
   }
 }
 

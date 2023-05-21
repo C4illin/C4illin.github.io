@@ -3,13 +3,13 @@
   src: url(./MonumentValley12.woff2) format("woff2");
 }
 
-:root {
+:root, :root.light {
   --text: #000;
   --background: #fff;
   --accent: #82c91e;
 }
 
-[data-theme="dark"] {
+:root.dark {
   --text: #fff;
   --background: #000;
   --accent: #7d36e1;
@@ -18,6 +18,7 @@
 html,
 body {
   background-color: var(--accent);
+  transition: background-color 0.3s ease;
 }
 
 body {
@@ -71,6 +72,7 @@ body {
   width: 100px;
   height: 50px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
 #toggle span::after {
@@ -82,7 +84,7 @@ body {
   position: absolute;
   left: 3px;
   top: 3px;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.4s;
   width: 40px;
   height: 40px;
 }
@@ -99,6 +101,7 @@ main {
   width: 100%;
   height: 100vh;
   background-color: var(--background);
+  transition: background-color 0.3s ease;
 }
 
 main h1 {
@@ -110,15 +113,12 @@ main h1 {
   box-sizing: border-box;
   display: inline-block;
   color: var(--text);
+  transition: color 0.3s ease;
 }
 
 span {
   display: inline-block;
   transition: transform 0.7s cubic-bezier(0.1, 0.2, 0.7, 3);
-}
-
-span.explode {
-  transform: scale(1.1);
 }
 
 ul {
@@ -137,6 +137,7 @@ li {
   display: block;
   position: relative;
   color: var(--accent);
+  transition: color 0.3s ease;
   float: left;
   clear: left;
 }
@@ -149,6 +150,7 @@ li:before {
 li a {
   text-decoration: none;
   color: var(--text);
+  transition: color 0.3s ease;
   font-family: sans-serif;
   font-weight: 300;
   font-size: 2rem;
@@ -185,5 +187,13 @@ a:hover:after {
 
   li a {
     font-size: 1.5rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fff;
+    --background: #000;
+    --accent: #7d36e1;
   }
 }
