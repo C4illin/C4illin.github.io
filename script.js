@@ -8,6 +8,11 @@ links.forEach((selfLink) => {
   selfLink.addEventListener("mouseover", function () {
     cursor.classList.add("cursor-link");
   });
+
+  selfLink.addEventListener("touchend", function () {
+    cursor.classList.remove("cursor-link");
+  });
+
   selfLink.addEventListener("mouseout", function () {
     cursor.classList.remove("cursor-link");
   });

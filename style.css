@@ -16,9 +16,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   cursor: none;
-
 }
-
 
 ::selection {
   color: var(--background);
@@ -42,7 +40,6 @@ body {
 #cursor.cursor-link {
   transform: translate(-50%, -50%) scale(3);
 }
-
 
 main {
   display: flex;
@@ -123,4 +120,19 @@ a:after {
 a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+@media screen and (max-width: 600px) {
+  main h1 {
+    font-size: 6rem;
+  }
+
+  ul {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  li a {
+    font-size: 1.5rem;
+  }
 }
