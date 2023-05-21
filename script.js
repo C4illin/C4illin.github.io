@@ -1,8 +1,8 @@
 // on mousemove
-let cursor = document.getElementById("cursor");
+const cursor = document.getElementById("cursor");
 let cursorInit = false;
-let links = document.querySelectorAll("a, h1, label");
-let letters = document.querySelectorAll("h1 > span");
+const links = document.querySelectorAll("a, h1, label");
+const letters = document.querySelectorAll("h1 > span");
 
 links.forEach((selfLink) => {
   selfLink.addEventListener("mouseover", function () {
@@ -28,13 +28,27 @@ document.addEventListener("mousemove", function (e) {
   }
 });
 
-// on mouseleave
-document.addEventListener("mouseout", function (e) {
-  cursor.style.opacity = 0;
-  cursorInit = false;
+document.addEventListener("touchmove", function (e) {
+  cursor.style.left = e.touches[0].clientX + "px";
+  cursor.style.top = e.touches[0].clientY + "px";
+
+  if (!cursorInit) {
+    cursor.style.opacity = 1;
+    cursorInit = true;
+  }
 });
 
-let explodeName = () => {
+const deleteMouse = () => {
+  cursor.style.opacity = 0;
+  cursorInit = false;
+}
+
+// on mouseleave
+document.addEventListener("mouseout", deleteMouse, false);
+
+document.addEventListener("touchend", deleteMouse, false);
+
+const explodeName = () => {
   letters.forEach((letter) => {
     letter.style.transform = `translate(${(Math.random() - 0.5) * 0.2}em, ${
       (Math.random() - 0.5) * 0.5
@@ -42,7 +56,7 @@ let explodeName = () => {
   });
 };
 
-let implodeName = () => {
+const implodeName = () => {
   letters.forEach((letter) => {
     letter.style.transform = `translate(0px, 0px)`;
   });

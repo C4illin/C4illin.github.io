@@ -6,14 +6,12 @@
 :root {
   --text: #000;
   --background: #fff;
-  --hover: #e9fac8;
   --accent: #82c91e;
 }
 
 [data-theme="dark"] {
   --text: #fff;
   --background: #000;
-  --hover: #160537;
   --accent: #7d36e1;
 }
 
@@ -156,7 +154,7 @@ li a {
   cursor: none;
 }
 
-li:after {
+a:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -169,7 +167,7 @@ li:after {
   transition: transform 0.3s ease;
 }
 
-li:hover:after {
+a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
