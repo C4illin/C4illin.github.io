@@ -4,30 +4,26 @@ const links = document.querySelectorAll("a, h1, label");
 const letters = document.querySelectorAll("h1 > span");
 
 links.forEach((selfLink) => {
-  selfLink.addEventListener("mouseover", function () {
-    cursor.classList.add("cursor-link");
-  });
-  
-  selfLink.addEventListener("touchmove", function () {
-    cursor.classList.add("cursor-link");
-  });
-
-  selfLink.addEventListener("touchend", function () {
-    cursor.classList.remove("cursor-link");
-  });
-
-  selfLink.addEventListener("mouseout", function () {
-    cursor.classList.remove("cursor-link");
-  });
+  selfLink.addEventListener("mouseover", () =>
+    cursor.classList.add("cursor-link")
+  );
+  selfLink.addEventListener("touchmove", () =>
+    cursor.classList.add("cursor-link")
+  );
+  selfLink.addEventListener("touchend", () =>
+    cursor.classList.remove("cursor-link")
+  );
+  selfLink.addEventListener("mouseout", () =>
+    cursor.classList.remove("cursor-link")
+  );
 });
 
 document.addEventListener("mousemove", (e) => moveMouse(e));
 document.addEventListener("click", (e) => moveMouse(e));
 
-document.addEventListener("touchmove", function (e) {
+document.addEventListener("touchmove", (e) => {
   cursor.style.left = e.touches[0].clientX + "px";
   cursor.style.top = e.touches[0].clientY + "px";
-
   if (!cursorInit) {
     cursor.style.opacity = 1;
     cursorInit = true;
@@ -37,7 +33,6 @@ document.addEventListener("touchmove", function (e) {
 const moveMouse = (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
-
   if (!cursorInit) {
     cursor.style.opacity = 1;
     cursorInit = true;
@@ -69,25 +64,29 @@ const implodeName = () => {
 };
 
 const toggleSwitch = document.getElementById("toggle-check");
+
 function detectColorScheme() {
   let theme = "light";
   if (localStorage.getItem("theme")) {
     if (localStorage.getItem("theme") == "dark") {
       theme = "dark";
     }
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  } else if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
     theme = "dark";
   }
 
   if (theme == "dark") {
     document.documentElement.classList.add("dark");
     toggleSwitch.checked = true;
-    console.log("dark");
   } else {
     document.documentElement.classList.add("light");
     toggleSwitch.checked = false;
   }
 }
+
 detectColorScheme();
 
 function switchTheme(e) {
